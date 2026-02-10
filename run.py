@@ -1,6 +1,6 @@
 """
 Quick run script for Braai Bites & Beverages
-Runs on port 5001 to avoid conflicts
+Runs on port 5002 to avoid conflicts
 """
 import sys
 import io
@@ -10,8 +10,10 @@ from app import create_app
 if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
+# Create the Flask app instance (needed for gunicorn)
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
     PORT = 5002
     print("\n" + "="*60)
     print("Braai Bites & Beverages is starting...")
