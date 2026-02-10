@@ -1,0 +1,18 @@
+# Copy these Environment Variables to Render.com
+# Go to: Dashboard → Your Service → Environment → Add Environment Variable
+
+SECRET_KEY=5c269d55c6866714bd560e85df149914e84b2404328df8e8b6f28ef03360e948
+FLASK_ENV=production
+FLASK_DEBUG=False
+
+# Change these to your secure credentials!
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=admin123
+
+# AliExpress API (from your .env file)
+ALIEXPRESS_APP_KEY=516252
+ALIEXPRESS_APP_SECRET=e6Q6Vk6eMyf7usmncNEd2a9GJrjX7QfM
+ALIEXPRESS_API_URL=https://gw.api.alibaba.com/openapi/
+
+# Optional: Add PostgreSQL database URL from Render
+# DATABASE_URL=postgresql://username:password@hostname:5432/dbname

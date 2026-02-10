@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Add Product - Braai Bites & Beverages{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Add / Update Product</h1>
+    <p>Add a new product or update an existing one</p>
+</div>
+
+<div class="form-container">
+    <form method="post" class="product-form">
+        <div class="form-group">
+            <label for="id">Product ID <span class="required">*</span></label>
+            <input type="number" id="id" name="id" required min="1" placeholder="Enter unique product ID">
+            <small>Use a unique numeric identifier for the product</small>
+        </div>
+
+        <div class="form-group">
+            <label for="title">Product Title <span class="required">*</span></label>
+            <input type="text" id="title" name="title" required maxlength="255" placeholder="Enter product title">
+            <small>Full descriptive name of the product</small>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image URL</label>
+            <input type="url" id="image" name="image" placeholder="https://example.com/image.jpg">
+            <small>Direct URL to product image (optional)</small>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="price">Price (ZAR) <span class="required">*</span></label>
+                <input type="number" id="price" name="price" required min="0" step="0.01" placeholder="0.00">
+                <small>Price in South African Rand</small>
+            </div>
+
+            <div class="form-group">
+                <label for="stock">Stock Quantity <span class="required">*</span></label>
+                <input type="number" id="stock" name="stock" required min="0" placeholder="0">
+                <small>Number of items in stock</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category <span class="required">*</span></label>
+            <select id="category" name="category" required>
+                <option value="">Select a category</option>
+                <option value="Braai Grill">Braai Grill</option>
+                <option value="Braai Tools">Braai Tools</option>
+                <option value="Craft Beer">Craft Beer</option>
+                <option value="Wine">Wine</option>
+                <option value="Spirits">Spirits</option>
+                <option value="Braai Snacks">Braai Snacks</option>
+            </select>
+            <small>Select the product category</small>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Product</button>
+            <a href="{{ url_for('main.home') }}" class="btn btn-outline">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<div class="help-section">
+    <h3>Need Help?</h3>
+    <p>To add products in bulk, use the sync utility:</p>
+    <pre><code>python -m app.utils.aliexpress_sync sync</code></pre>
+</div>
+{% endblock %}

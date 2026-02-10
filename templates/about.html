@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - Braai Bites & Beverages{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>About Braai Bites & Beverages</h1>
+</div>
+
+<section class="content-section">
+    <h2>Our Story</h2>
+    <p>
+        Braai Bites & Beverages was born from a passion for bringing people together over great food and drinks.
+        We understand that a braai is more than just a meal – it's a tradition, a social event, and a way of life.
+    </p>
+
+    <h2>What We Offer</h2>
+    <div class="info-grid">
+        <div class="info-item">
+            <h3>Premium Braai Equipment</h3>
+            <p>From grills to accessories, we stock everything you need for the perfect braai.</p>
+        </div>
+
+        <div class="info-item">
+            <h3>Craft Beverages</h3>
+            <p>A carefully curated selection of craft beers, fine wines, and premium spirits.</p>
+        </div>
+
+        <div class="info-item">
+            <h3>Quality Snacks</h3>
+            <p>Delicious snacks and accompaniments to elevate your braai experience.</p>
+        </div>
+
+        <div class="info-item">
+            <h3>Expert Advice</h3>
+            <p>Our team is passionate about braai culture and always ready to help.</p>
+        </div>
+    </div>
+
+    <h2>Our Commitment</h2>
+    <p>
+        We're committed to providing:
+    </p>
+    <ul>
+        <li>High-quality products at competitive prices</li>
+        <li>Fast and reliable delivery service</li>
+        <li>Excellent customer support</li>
+        <li>A carefully curated selection of products</li>
+    </ul>
+
+    <div class="cta-section">
+        <h2>Ready to Start Your Braai Journey?</h2>
+        <a href="{{ url_for('products.category_view', category='Braai Grill') }}" class="btn btn-primary">Start Shopping</a>
+    </div>
+</section>
+{% endblock %}

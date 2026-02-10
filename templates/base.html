@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your one-stop shop for braai equipment, craft beer, wine, spirits, and snacks">
+    <title>{% block title %}Braai Bites & Beverages{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">
+                    <a href="{{ url_for('main.home') }}">Braai Bites & Beverages</a>
+                </h1>
+                <nav class="main-nav">
+                    <a href="{{ url_for('main.home') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('products.category_view', category='Braai Grill') }}" class="nav-link">Braai Equipment</a>
+                    <a href="{{ url_for('products.category_view', category='Craft Beer') }}" class="nav-link">Craft Beer</a>
+                    <a href="{{ url_for('products.category_view', category='Wine') }}" class="nav-link">Wine & Spirits</a>
+                    <a href="{{ url_for('products.category_view', category='Braai Snacks') }}" class="nav-link">Snacks</a>
+                </nav>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form action="{{ url_for('products.search') }}" method="get" class="search-form">
+                    <input type="text" name="q" placeholder="Search products..." class="search-input" value="{{ request.args.get('q', '') }}">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                <div class="container">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            <span class="alert-content">{{ message }}</span>
+                            <button class="alert-close" onclick="this.parentElement.style.display='none'">&times;</button>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Braai Bites & Beverages. All rights reserved.</p>
+                <p class="footer-links">
+                    <a href="{{ url_for('main.about') }}">About</a> |
+                    <a href="#">Contact</a> |
+                    <a href="#">Privacy Policy</a> |
+                    <a href="{{ url_for('admin.login') }}">Admin Login</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error - Braai Bites & Beverages{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="error-content">
+        <h1 class="error-code">500</h1>
+        <h2 class="error-title">Internal Server Error</h2>
+        <p class="error-message">Oops! Something went wrong on our end. We're working to fix it.</p>
+        <div class="error-actions">
+            <a href="{{ url_for('main.home') }}" class="btn btn-primary">Go Home</a>
+            <a href="javascript:history.back()" class="btn btn-outline">Go Back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

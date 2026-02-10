@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found - Braai Bites & Beverages{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="error-content">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">Page Not Found</h2>
+        <p class="error-message">Sorry, the page you're looking for doesn't exist.</p>
+        <div class="error-actions">
+            <a href="{{ url_for('main.home') }}" class="btn btn-primary">Go Home</a>
+            <a href="{{ url_for('products.category_view', category='Braai Grill') }}" class="btn btn-outline">Browse Products</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

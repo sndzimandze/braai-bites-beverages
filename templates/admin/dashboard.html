@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Braai Bites & Beverages{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <h1>Admin Dashboard</h1>
+    <div class="admin-actions">
+        <span class="admin-user">Logged in as: {{ session.admin_username }}</span>
+        <a href="{{ url_for('admin.products') }}" class="btn btn-primary">Manage Products</a>
+        <a href="{{ url_for('admin.logout') }}" class="btn btn-outline">Logout</a>
+    </div>
+</div>
+
+<div class="dashboard-stats">
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-primary">📦</div>
+        <div class="stat-content">
+            <h3 class="stat-number">{{ total_products }}</h3>
+            <p class="stat-label">Total Products</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-success">✓</div>
+        <div class="stat-content">
+            <h3 class="stat-number">{{ in_stock }}</h3>
+            <p class="stat-label">In Stock</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-danger">✗</div>
+        <div class="stat-content">
+            <h3 class="stat-number">{{ out_of_stock }}</h3>
+            <p class="stat-label">Out of Stock</p>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-section">
+    <h2>Products by Category</h2>
+    <div class="category-stats">
+        {% for category, count in categories %}
+        <div class="category-stat-item">
+            <span class="category-stat-name">{{ category }}</span>
+            <span class="category-stat-count">{{ count }} products</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="dashboard-section">
+    <h2>Quick Actions</h2>
+    <div class="quick-actions">
+        <a href="{{ url_for('admin.add_product') }}" class="action-card">
+            <h3>Add New Product</h3>
+            <p>Add a new product to your inventory</p>
+        </a>
+
+        <a href="{{ url_for('admin.products') }}" class="action-card">
+            <h3>Manage Products</h3>
+            <p>View, edit, or delete existing products</p>
+        </a>
+
+        <a href="{{ url_for('main.home') }}" class="action-card">
+            <h3>View Public Site</h3>
+            <p>See how your store looks to customers</p>
+        </a>
+    </div>
+</div>
+{% endblock %}

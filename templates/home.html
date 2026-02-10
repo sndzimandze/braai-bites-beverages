@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Braai Bites & Beverages{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">Welcome to Braai Bites & Beverages</h1>
+    <p class="hero-subtitle">Your one-stop shop for braai equipment, craft beer, wine, spirits, and snacks.</p>
+    <div class="hero-cta">
+        <a href="{{ url_for('products.category_view', category='Braai Grill') }}" class="btn btn-primary">Shop Braai Equipment</a>
+        <a href="{{ url_for('products.category_view', category='Craft Beer') }}" class="btn btn-outline">Explore Beverages</a>
+    </div>
+</div>
+
+<section class="categories-section">
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="category-grid">
+        <a href="{{ url_for('products.category_view', category='Braai Grill') }}" class="category-card">
+            <h3>Braai Equipment</h3>
+            <p>Grills, tools, and accessories for the perfect braai</p>
+        </a>
+
+        <a href="{{ url_for('products.category_view', category='Craft Beer') }}" class="category-card">
+            <h3>Craft Beer</h3>
+            <p>Premium craft beers from around the world</p>
+        </a>
+
+        <a href="{{ url_for('products.category_view', category='Wine') }}" class="category-card">
+            <h3>Wine & Spirits</h3>
+            <p>Fine wines and premium spirits selection</p>
+        </a>
+
+        <a href="{{ url_for('products.category_view', category='Braai Snacks') }}" class="category-card">
+            <h3>Braai Snacks</h3>
+            <p>Delicious snacks to complement your braai</p>
+        </a>
+
+        <a href="{{ url_for('products.category_view', category='Braai Tools') }}" class="category-card">
+            <h3>Braai Tools</h3>
+            <p>Essential tools for the braai master</p>
+        </a>
+
+        <a href="{{ url_for('products.category_view', category='Spirits') }}" class="category-card">
+            <h3>Premium Spirits</h3>
+            <p>Whiskey, gin, rum, and more</p>
+        </a>
+    </div>
+</section>
+
+<section class="features-section">
+    <h2 class="section-title">Why Choose Us?</h2>
+    <div class="features-grid">
+        <div class="feature-item">
+            <h3>Quality Products</h3>
+            <p>Hand-picked selection of premium braai and beverage products</p>
+        </div>
+
+        <div class="feature-item">
+            <h3>Fast Delivery</h3>
+            <p>Quick and reliable delivery to your doorstep</p>
+        </div>
+
+        <div class="feature-item">
+            <h3>Best Prices</h3>
+            <p>Competitive pricing on all your braai essentials</p>
+        </div>
+
+        <div class="feature-item">
+            <h3>Expert Selection</h3>
+            <p>Curated by braai and beverage enthusiasts</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

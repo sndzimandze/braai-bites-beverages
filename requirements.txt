@@ -1,0 +1,20 @@
+# Core Framework
+Flask==3.0.0
+Werkzeug==3.0.1
+
+# Database
+Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.0.5
+SQLAlchemy>=2.0.36
+
+# Environment & Configuration
+python-dotenv==1.0.0
+
+# HTTP Requests
+requests==2.31.0
+
+# Validation
+email-validator==2.1.0
+
+# Production Server (optional)
+gunicorn==21.2.0

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}{{ action }} Product - Admin{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <h1>{{ action }} Product</h1>
+    <div class="admin-actions">
+        <a href="{{ url_for('admin.products') }}" class="btn btn-outline">Back to Products</a>
+        <a href="{{ url_for('admin.dashboard') }}" class="btn btn-outline">Dashboard</a>
+    </div>
+</div>
+
+<div class="form-container">
+    <form method="POST" class="product-form">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="title" class="form-label required">Product Title</label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    class="form-input"
+                    value="{{ product.title if product else '' }}"
+                    required
+                    placeholder="Enter product name"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="category" class="form-label required">Category</label>
+                <select id="category" name="category" class="form-input" required>
+                    <option value="">Select a category</option>
+                    <option value="Braai Grill" {% if product and product.category == 'Braai Grill' %}selected{% endif %}>Braai Grill</option>
+                    <option value="Craft Beer" {% if product and product.category == 'Craft Beer' %}selected{% endif %}>Craft Beer</option>
+                    <option value="Wine" {% if product and product.category == 'Wine' %}selected{% endif %}>Wine</option>
+                    <option value="Spirits" {% if product and product.category == 'Spirits' %}selected{% endif %}>Spirits</option>
+                    <option value="Braai Snacks" {% if product and product.category == 'Braai Snacks' %}selected{% endif %}>Braai Snacks</option>
+                    <option value="Braai Accessories" {% if product and product.category == 'Braai Accessories' %}selected{% endif %}>Braai Accessories</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="price" class="form-label required">Price (R)</label>
+                <input
+                    type="number"
+                    id="price"
+                    name="price"
+                    class="form-input"
+                    value="{{ product.price if product else '' }}"
+                    step="0.01"
+                    min="0"
+                    required
+                    placeholder="0.00"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="stock" class="form-label required">Stock Quantity</label>
+                <input
+                    type="number"
+                    id="stock"
+                    name="stock"
+                    class="form-input"
+                    value="{{ product.stock if product else '' }}"
+                    min="0"
+                    required
+                    placeholder="0"
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image" class="form-label">Image URL</label>
+            <input
+                type="url"
+                id="image"
+                name="image"
+                class="form-input"
+                value="{{ product.image if product else '' }}"
+                placeholder="https://example.com/image.jpg"
+            >
+            <p class="form-help">Enter the full URL of the product image</p>
+        </div>
+
+        {% if product and product.image %}
+        <div class="form-group">
+            <label class="form-label">Current Image</label>
+            <div class="image-preview">
+                <img src="{{ product.image }}" alt="{{ product.title }}" class="preview-image">
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{{ action }} Product</button>
+            <a href="{{ url_for('admin.products') }}" class="btn btn-outline">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

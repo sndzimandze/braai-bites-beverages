@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login - Braai Bites & Beverages{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="admin-login-container">
+    <div class="login-card">
+        <h1 class="login-title">Admin Login</h1>
+        <p class="login-subtitle">Access the administrative area</p>
+
+        <form method="POST" class="login-form">
+            <div class="form-group">
+                <label for="username" class="form-label">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    class="form-input"
+                    required
+                    autofocus
+                    autocomplete="username"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-input"
+                    required
+                    autocomplete="current-password"
+                >
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+
+        <div class="login-footer">
+            <a href="{{ url_for('main.home') }}" class="link-secondary">Back to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
